@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gas Price Information</title>
+</head>
+<body>
+  <h1>Gas Price Information</h1>
+  <div id="result"></div>
+
+  <script>
+    const url = 'https://gas-price.p.rapidapi.com/canada';
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'a466d1a3e4mshb249d8c601af353p1a5e11jsn4645402b4c38',
+        'X-RapidAPI-Host': 'gas-price.p.rapidapi.com'
+      }
+    };
+
+    async function fetchData() {
+      try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        document.getElementById('result').textContent = result;
+      } catch (error) {
+        console.error(error);
+        document.getElementById('result').textContent = 'An error occurred. Please check the console.';
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
